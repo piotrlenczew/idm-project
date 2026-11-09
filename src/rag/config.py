@@ -101,7 +101,7 @@ def load_settings(env_file: str | None = ".env") -> Settings:
             "EMBED_QUERY_INSTRUCTION",
             "Given a question, retrieve passages from the documents that answer it",
         ),
-        data_dir=_env("DATA_DIR", "data"),
+        data_dir=_env("DATA_DIR", "data/raw"),
         qdrant_url=_env("QDRANT_URL", "http://localhost:6333"),
         collection=_env("COLLECTION", "docs"),
         top_k=int(_env("TOP_K", "5")),
