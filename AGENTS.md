@@ -5,9 +5,21 @@ Czytaj w całości przed zmianami. Instrukcje dla ludzi: `README.md`.
 
 ## Cel projektu
 
-Starter RAG dla studentów kursu „Inżynieria dużych modeli językowych” (WEiTI PW). Priorytetem jest
-**czytelność dydaktyczna**: student ma zrozumieć cały przepływ, czytając kod. Wybieraj proste,
-jawne rozwiązania zamiast sprytnych abstrakcji. Repo musi działać na laptopach 8–16 GB
+Aplikacja wspierająca naukę na podstawie dostarczonych materiałów: odpowiada na pytania opierając
+twierdzenia modelu na cytowanych fragmentach źródeł. Projekt zespołowy (2 osoby) na kurs
+„Inżynieria dużych modeli językowych” (WEiTI PW), zbudowany na starterze RAG od prowadzącego.
+Działa lokalnie (Ollama + Qdrant) i jest używana z terminala – bez frontendu.
+
+Wykłady Missing Semester 2026 i MIT 6.0001 to przykładowy zestaw materiałów do nauki używany do oceny jakości aplikacji
+(pobierany przez `scripts/fetch_corpus.py`).
+
+Etapy projektu:
+1. działający end-to-end na przykładowych materiałach,
+2. złoty zestaw pytań i ewaluacja,
+3. poprawa jakości (retrieval, chunking, prompt),
+4. tool calling (narzędzia do ustalenia).
+
+Wybieraj proste, jawne rozwiązania zamiast sprytnych abstrakcji. Repo musi działać na laptopach 8–16 GB
 (macOS/Windows/Linux).
 
 ## Architektura
@@ -22,6 +34,14 @@ cli.py ──► ingest.py ──► normalize.py ──► chunking.py ──�
    └─► check.py ────► wszystko powyżej (smoke test)
 config.py – jedyne źródło ustawień (dataclass `Settings` z .env)
 ```
+
+Dane i skrypty:
+- `data/raw/<źródło>/` – korpus pobierany przez `scripts/fetch_corpus.py` (poza repozytorium);
+  to domyślny `DATA_DIR`, który indeksuje `make ingest`.
+- `data/sample/` – mały zestaw do testów (używa go `eval/golden_sample.jsonl`). **Nie indeksuj go
+  razem z korpusem.**
+- `scripts/` – `fetch_corpus.py` (tylko pobiera pliki), `show_blocks.py` (wynik parsowania przed
+  chunkingiem).
 
 Kluczowe kontrakty:
 - **Chunk payload** w Qdrancie: `text`, `source`, `page`|`section`, `source_ids` (lista), `chunking`,
@@ -38,8 +58,10 @@ Kluczowe kontrakty:
 ```bash
 make setup | pull | up | down          # środowisko
 make check                             # smoke test (wymaga Ollamy i Qdranta)
-make ingest [DATA=...] [ARGS=...]      # uv run rag ingest
+make ingest [DATA=...] [ARGS=...]      # uv run rag ingest (domyślnie DATA_DIR=data/raw)
 make ask Q="..." | make agent Q="..."  # uv run rag ask / agent
+uv run python scripts/fetch_corpus.py  # pobranie korpusu do data/raw/
+uv run python scripts/show_blocks.py [ścieżki] [--full]  # wynik parsowania, bez Ollamy i Qdranta
 make eval [ARGS=--generate]            # uv run rag eval
 make test                              # pytest, bez sieci – uruchamiaj po każdej zmianie
 make lint                              # ruff check + ruff format --check
@@ -76,4 +98,5 @@ także `make eval` i porównaj z poprzednim wynikiem w `eval/results/`.
 - Nie ustawiaj domyślnie thinkingu (`LLM_REASONING_EFFORT`) na nic innego niż `none` – qwen3.5
   z thinkingiem odpowiada ~100× wolniej.
 - Nie zakładaj, że `response_format` / `tool_choice` są respektowane przez każdy serwer.
-- Nie wstawiaj do kodu twardych adresów, kluczy ani nazw modeli poza `config.py`.
+- Nie wstawiaj do kodu twardych adresów usług (LLM, embeddingi, Qdrant), kluczy ani nazw modeli poza
+  `config.py` / `.env`. Adresy źródeł korpusu mieszkają tylko w `scripts/fetch_corpus.py`.
