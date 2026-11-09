@@ -7,12 +7,13 @@ sekcja dla Markdowna). Chunking dzieli bloki dalej, zachowując ich metadane.
 from __future__ import annotations
 
 import logging
-import re
 import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
+import marko
+from marko import block
 from pypdf import PdfReader
 
 from rag.chunking import Block, Chunk, chunk_blocks
@@ -38,22 +39,23 @@ def load_pdf(path: Path) -> list[Block]:
     ]
 
 
-_MD_HEADING = re.compile(r"^(#{1,6})\s+(.+?)\s*$", re.MULTILINE)
-
-
 def load_markdown(path: Path) -> list[Block]:
     """Jeden blok na sekcję; `section` = tekst najbliższego nagłówka."""
     text = path.read_text(encoding="utf-8")
     blocks: list[Block] = []
-    matches = list(_MD_HEADING.finditer(text))
-    if not matches or matches[0].start() > 0:
-        intro = text[: matches[0].start()] if matches else text
+    headings = [
+        e.source_span
+        for e in marko.parse(text).children
+        if isinstance(e, block.Heading) and e.source_span
+    ]
+    if not headings or headings[0][0] > 0:
+        intro = text[: headings[0][0]] if headings else text
         if intro.strip():
             blocks.append(Block(intro, {"source": path.name, "section": ""}))
-    for i, m in enumerate(matches):
-        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
-        body = text[m.start() : end]
-        blocks.append(Block(body, {"source": path.name, "section": m.group(2)}))
+    for i, (start, heading_end) in enumerate(headings):
+        end = headings[i + 1][0] if i + 1 < len(headings) else len(text)
+        title = text[start:heading_end].strip().lstrip("#").strip()
+        blocks.append(Block(text[start:end], {"source": path.name, "section": title}))
     return blocks
 
 
