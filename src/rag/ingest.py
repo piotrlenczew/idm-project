@@ -17,7 +17,7 @@ from marko import block
 from pypdf import PdfReader
 
 from rag.chunking import Block, Chunk, chunk_blocks
-from rag.config import Settings
+from rag.config import Settings, get_settings
 from rag.embeddings import embed_documents
 from rag.normalize import basic_clean, join_split_words, word_counts
 from rag.store import ensure_collection, get_client, upsert_chunks
@@ -30,11 +30,22 @@ SUPPORTED_SUFFIXES = (".pdf", ".md", ".txt")
 # --------------------------------------------------------------------------- loaders
 
 
+def source_name(path: Path) -> str:
+    """Nazwa źródła: ścieżka względem `DATA_DIR` (np. `mit-6-0001/MIT6_0001F16_Lec1.pdf`).
+
+    Dzięki temu pliki o tej samej nazwie w różnych podkatalogach się nie mylą. Pliki spoza
+    `DATA_DIR` (np. `data/sample`) dostają samą nazwę.
+    """
+    root = Path(get_settings().data_dir).resolve()
+    path = path.resolve()
+    return path.relative_to(root).as_posix() if path.is_relative_to(root) else path.name
+
+
 def load_pdf(path: Path) -> list[Block]:
     """Jeden blok na stronę; `page` liczymy od 1 (tak jak w czytniku PDF)."""
     reader = PdfReader(path)
     return [
-        Block(text=page.extract_text() or "", metadata={"source": path.name, "page": i})
+        Block(text=page.extract_text() or "", metadata={"source": source_name(path), "page": i})
         for i, page in enumerate(reader.pages, start=1)
     ]
 
@@ -42,6 +53,7 @@ def load_pdf(path: Path) -> list[Block]:
 def load_markdown(path: Path) -> list[Block]:
     """Jeden blok na sekcję; `section` = tekst najbliższego nagłówka."""
     text = path.read_text(encoding="utf-8")
+    source = source_name(path)
     blocks: list[Block] = []
     headings = [
         e.source_span
@@ -51,17 +63,17 @@ def load_markdown(path: Path) -> list[Block]:
     if not headings or headings[0][0] > 0:
         intro = text[: headings[0][0]] if headings else text
         if intro.strip():
-            blocks.append(Block(intro, {"source": path.name, "section": ""}))
+            blocks.append(Block(intro, {"source": source, "section": ""}))
     for i, (start, heading_end) in enumerate(headings):
         end = headings[i + 1][0] if i + 1 < len(headings) else len(text)
         title = text[start:heading_end].strip().lstrip("#").strip()
-        blocks.append(Block(text[start:end], {"source": path.name, "section": title}))
+        blocks.append(Block(text[start:end], {"source": source, "section": title}))
     return blocks
 
 
 def load_text(path: Path) -> list[Block]:
     """Cały plik TXT jako jeden blok."""
-    return [Block(path.read_text(encoding="utf-8"), {"source": path.name})]
+    return [Block(path.read_text(encoding="utf-8"), {"source": source_name(path)})]
 
 
 def load_file(path: Path) -> list[Block]:
@@ -90,7 +102,8 @@ def source_ids_for(metadata: dict[str, Any]) -> list[str]:
     """Stabilne identyfikatory źródła, NIEZALEŻNE od strategii chunkingu.
 
     Złoty zbiór (eval/) odwołuje się do nich, więc recall@k można porównywać między
-    strategiami chunkingu. Format: `plik.pdf#p3`, `plik.md#Nazwa sekcji`, `plik.txt`.
+    strategiami chunkingu. Format: `plik.pdf#p3`, `plik.md#Nazwa sekcji`, `plik.txt`, gdzie `plik`
+    to `source_name` (np. `mit-6-0001/MIT6_0001F16_Lec1.pdf#p3`).
     """
     source = metadata["source"]
     if "page" in metadata:
