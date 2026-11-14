@@ -3,7 +3,8 @@
 Skrypt TYLKO pobiera pliki – wselkie zmiany powinny być realizowane w dalszych etapach.
 
 Korpus:
-- Missing Semester 2026 (MIT): 9 notatek w Markdownie z repozytorium na GitHubie,
+- Missing Semester 2026 (MIT): 9 notatek w Markdownie z repozytorium na GitHubie
+  (przypięty commit `MS_COMMIT`),
 - 6.0001 Introduction to Computer Science and Programming in Python (MIT, jesień 2016):
   slajdy 12 wykładów w PDF (pliki .py pominięte gdyż powtarzają zawartość wykładów, również pominięte transkrypcje).
 
@@ -23,7 +24,11 @@ from pathlib import Path
 
 from rag.config import get_settings
 
-MS_RAW_URL = "https://raw.githubusercontent.com/missing-semester/missing-semester/master/_2026"
+# Przypięta wersja notatek: `master` wciąż się zmienia, a złoty zestaw wskazuje konkretne sekcje.
+MS_COMMIT = "1d695c94ccafdce3f06d6b9dfe3e6f106097693a"
+MS_RAW_URL = (
+    f"https://raw.githubusercontent.com/missing-semester/missing-semester/{MS_COMMIT}/_2026"
+)
 MS_DIR = "missing-semester"  # podkatalog w `DATA_DIR`
 MS_LECTURES = (
     "course-shell",
