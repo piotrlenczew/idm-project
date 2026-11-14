@@ -36,17 +36,20 @@ config.py – jedyne źródło ustawień (dataclass `Settings` z .env)
 ```
 
 Dane i skrypty:
-- `data/raw/<źródło>/` – korpus pobierany przez `scripts/fetch_corpus.py` (poza repozytorium);
-  to domyślny `DATA_DIR`, który indeksuje `make ingest`.
+- `{DATA_DIR}/<korpus>/` (DATA_DIR to domyślnie `data/raw/`) – korpus pobierany przez `scripts/fetch_corpus.py`
+  (poza repozytorium), który indeksuje `make ingest`.
 - `data/sample/` – mały zestaw do testów (używa go `eval/golden_sample.jsonl`). **Nie indeksuj go
   razem z korpusem.**
+- `eval/golden.jsonl` – złoty zestaw pytań projektu (opis w README). Pytania pisze człowiek;
+  nie generuj ich ani nie zmieniaj bez prośby.
 - `scripts/` – `fetch_corpus.py` (tylko pobiera pliki), `show_blocks.py` (wynik parsowania przed
-  chunkingiem).
+  chunkingiem), `build_golden.py` (losuje bloki według rozkładu i dopisuje pytania do złotego zestawu).
 
 Kluczowe kontrakty:
 - **Chunk payload** w Qdrancie: `text`, `source`, `page`|`section`, `source_ids` (lista), `chunking`,
   `chunk_index`, `embed_model`. Wektor nazwany `dense` (miejsce na sparse `bm25`).
-- **`source_ids`** są niezależne od chunkingu (`plik.pdf#p3`, `plik.md#Sekcja`, `plik.txt`);
+- **`source_ids`** są niezależne od chunkingu (`plik.pdf#p3`, `plik.md#Sekcja`, `plik.txt`, gdzie
+  `plik` to ścieżka względem `DATA_DIR` – `ingest.source_name`, np. `mit-6-0001/MIT6_0001F16_Lec1.pdf#p3`);
   złote zbiory w `eval/*.jsonl` się do nich odwołują. Zmiana formatu = aktualizacja złotych zbiorów.
 - **Cytowania**: model zwraca numery fragmentów kontekstu (`Answer.citations`), mapowanie na źródła
   robi kod (`RagResult.cited_hits`). Nie każ modelowi przepisywać nazw plików.
@@ -60,8 +63,9 @@ make setup | pull | up | down          # środowisko
 make check                             # smoke test (wymaga Ollamy i Qdranta)
 make ingest [DATA=...] [ARGS=...]      # uv run rag ingest (domyślnie DATA_DIR=data/raw)
 make ask Q="..." | make agent Q="..."  # uv run rag ask / agent
-uv run python scripts/fetch_corpus.py  # pobranie korpusu do data/raw/
+uv run python scripts/fetch_corpus.py  # pobranie korpusu do DATA_DIR
 uv run python scripts/show_blocks.py [ścieżki] [--full]  # wynik parsowania, bez Ollamy i Qdranta
+uv run python scripts/build_golden.py                    # interaktywne pisanie złotego zestawu
 make eval [ARGS=--generate]            # uv run rag eval
 make test                              # pytest, bez sieci – uruchamiaj po każdej zmianie
 make lint                              # ruff check + ruff format --check
