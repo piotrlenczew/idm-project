@@ -1,4 +1,4 @@
-"""Pobiera korpus dokumentów do `data/raw/`.
+"""Pobiera korpus dokumentów do `DATA_DIR` (domyślnie `data/raw/`).
 
 Skrypt TYLKO pobiera pliki – wselkie zmiany powinny być realizowane w dalszych etapach.
 
@@ -10,7 +10,7 @@ Korpus:
 Obie strony udostępniają materiały na licencji CC BY-NC-SA 4.0:
 użycie jedynie niekomercyjnie, podając źródło.
 
-Użycie: `uv run python scripts/fetch_corpus.py [--out data/raw] [--force]`
+Użycie: `uv run python scripts/fetch_corpus.py [--out {DATA_DIR}] [--force]`
 """
 
 from __future__ import annotations
@@ -21,8 +21,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from rag.config import get_settings
+
 MS_RAW_URL = "https://raw.githubusercontent.com/missing-semester/missing-semester/master/_2026"
-MS_DIR = "missing-semester"  # podkatalog w `data/raw/`
+MS_DIR = "missing-semester"  # podkatalog w `DATA_DIR`
 MS_LECTURES = (
     "course-shell",
     "command-line-environment",
@@ -37,7 +39,7 @@ MS_LECTURES = (
 
 MIT_HOST = "https://ocw.mit.edu"
 MIT_BASE = f"{MIT_HOST}/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016"
-MIT_DIR = "mit-6-0001"  # podkatalog w `data/raw/`
+MIT_DIR = "mit-6-0001"  # podkatalog w `DATA_DIR`
 MIT_LECTURES = range(1, 13)
 
 
@@ -77,7 +79,9 @@ def corpus_files() -> dict[str, str]:
 def main() -> None:
     """Pobiera brakujące pliki korpusu."""
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])  # pyright: ignore[reportOptionalMemberAccess]
-    parser.add_argument("--out", type=Path, default=Path("data/raw"), help="katalog docelowy")
+    parser.add_argument(
+        "--out", type=Path, default=Path(get_settings().data_dir), help="katalog docelowy"
+    )
     parser.add_argument("--force", action="store_true", help="pobierz ponownie istniejące pliki")
     args = parser.parse_args()
 
