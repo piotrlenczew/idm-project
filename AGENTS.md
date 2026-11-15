@@ -47,11 +47,17 @@ Dane i skrypty:
 
 Kluczowe kontrakty:
 - **Chunk payload** w Qdrancie: `text`, `source`, `page`|`section`, `source_ids` (lista), `chunking`,
-  `chunk_index`, `embed_model`. Wektor nazwany `dense` (miejsce na sparse `bm25`).
+  `chunk_index`, `start` i `length` (położenie chunka w tekście bloku), `embed_model`. Wektor
+  nazwany `dense` (miejsce na sparse `bm25`).
 - **`source_ids`** są niezależne od chunkingu (`plik.pdf#p3`, `plik.md#Sekcja`, `plik.txt`, gdzie
   `plik` to ścieżka względem `DATA_DIR` – `ingest.source_name`, np. `mit-6-0001/MIT6_0001F16_Lec1.pdf#p3`;
   powtórzony w pliku nagłówek dostaje numer: `plik.md#Debugging (2)`);
   złote zbiory w `eval/*.jsonl` się do nich odwołują. Zmiana formatu = aktualizacja złotych zbiorów.
+- **Parsowanie i normalizacja** (`ingest.load_*`, `normalize.py`) wyznaczają bloki i ich tekst.
+  Wyniki ewaluacji zapisują chunki tylko jako `source_ids` + `start`/`length` w tekście bloku, więc
+  zmiana parsowania albo normalizacji psuje odtwarzanie tekstu ze starszych wyników (a zmiana
+  podziału na bloki może unieważnić `source_ids` w złotych zbiorach). Nie zmieniaj ich przy okazji –
+  najpierw uzgodnij to z użytkownikiem.
 - **Cytowania**: model zwraca numery fragmentów kontekstu (`Answer.citations`), mapowanie na źródła
   robi kod (`RagResult.cited_hits`). Nie każ modelowi przepisywać nazw plików.
 - **Structured output**: zawsze przez `structured.complete_structured()` (`auto`: native → prompt;

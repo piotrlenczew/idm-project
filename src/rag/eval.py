@@ -86,10 +86,17 @@ def evaluate(
     for item in items:
         row: dict[str, Any] = {"id": item.id, "question": item.question, "tags": item.tags}
         hits: list[Hit] = retrieve(item.question, settings, k=max_k, collection=collection)
-        # Pobrane chunki (źródło, podobieństwo, tekst) – do analizy błędów bez ponownego retrievalu;
-        # model widział pierwsze TOP_K z nich (cytowanie [n] = retrieved[n - 1]).
+        # Pobrane chunki – do analizy błędów bez ponownego retrievalu; model widział pierwsze
+        # TOP_K z nich (cytowanie [n] = retrieved[n - 1]). Zamiast tekstu zapisujemy położenie
+        # chunka w bloku (`start`, `length`) – tekst odtwarza się z korpusu.
         row["retrieved"] = [
-            {"source_ids": h.source_ids, "score": h.score, "text": h.text} for h in hits
+            {
+                "source_ids": h.source_ids,
+                "score": h.score,
+                "start": h.metadata.get("start"),
+                "length": h.metadata.get("length"),
+            }
+            for h in hits
         ]
         result = None
         if generate:

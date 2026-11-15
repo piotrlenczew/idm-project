@@ -91,12 +91,21 @@ def _merge(pieces: list[str], sep: str, size: int, overlap: int) -> list[str]:
 
 
 def chunk_blocks(blocks: list[Block], strategy: str, size: int, overlap: int) -> list[Chunk]:
-    """Dzieli bloki dokumentu na chunki; każdy chunk dziedziczy metadane bloku."""
+    """Dzieli bloki dokumentu na chunki; każdy chunk dziedziczy metadane bloku.
+
+    `start` i `length` to położenie chunka w tekście bloku (`block.text[start:start + length]`),
+    żeby tekst chunka dało się odtworzyć z korpusu bez zapisywania go (np. w wynikach ewaluacji).
+    """
     split = {"fixed": fixed_size, "recursive": recursive_split}[strategy]
 
     chunks: list[Chunk] = []
     for block in blocks:
+        start = 0
         for text in split(block.text, size, overlap):
+            # Chunki idą po kolei, więc szukamy od początku poprzedniego (-1 = nie znaleziono).
+            start = block.text.find(text, start)
             meta = {**block.metadata, "chunking": strategy, "chunk_index": len(chunks)}
+            meta |= {"start": start if start >= 0 else None, "length": len(text)}
             chunks.append(Chunk(text=text, metadata=meta))
+            start = max(start, 0)
     return chunks
