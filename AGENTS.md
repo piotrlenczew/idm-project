@@ -81,6 +81,15 @@ make lint                              # ruff check + ruff format --check
 Przed zakończeniem pracy: `make lint && make test`. Jeśli zmieniasz retrieval, chunking albo prompt –
 także `make eval` i porównaj z poprzednim wynikiem w `eval/results/`.
 
+Przebieg ewaluacji, który zostaje w repozytorium (osobny katalog w `eval/`, np. `eval/first_version/`),
+ma obok wyników krótki `README.md` (wzór: `eval/first_version/README.md`): co sprawdza ten
+przebieg, informacja, że ustawienia są w polu `config` pliku JSON, oraz środowisko – commit kodu,
+wersja Ollamy, modele z kwantyzacją i digestem (`ollama list`), `OLLAMA_CONTEXT_LENGTH`, sprzęt
+(rodzaj GPU – NVIDIA/CUDA, Apple Silicon albo sam CPU – oraz ilość VRAM i RAM, bez nazw modeli
+CPU/GPU) i system. Repozytorium jest publiczne: nie wpisuj nazwy hosta, użytkownika, ścieżek
+z katalogu domowego, adresów innych niż `localhost` ani kluczy. Przed przebiegiem
+zacommituj kod i `golden.jsonl`, żeby commit jednoznacznie opisywał wersję.
+
 ## Konwencje
 
 - Python 3.12, `uv` (zależności tylko przez `uv add`), typy w sygnaturach, docstring w każdym
