@@ -64,7 +64,8 @@ uv run python scripts/build_golden.py
 Format linii: `{"id", "question", "answer", "source_ids", "tags"}`:
 - `id` – plik, typ i numer pytania tego typu w pliku, np. `missing-semester/version-control.md:easy-2`,
   `mit-6-0001/MIT6_0001F16_Lec3.pdf:multi-1`, `out_of_scope-4`,
-- `source_ids` – fragmenty źródła (np. `missing-semester/version-control.md#Basics`, `mit-6-0001/MIT6_0001F16_Lec3.pdf#p7`),
+- `source_ids` – fragmenty źródła (np. `missing-semester/version-control.md#Basics`, `mit-6-0001/MIT6_0001F16_Lec3.pdf#p7`);
+  sekcja, której nagłówek powtarza się w pliku, ma numer (`debugging-profiling.md#Debugging (2)`),
 - `tags` – typ pytania i korpus (`missing-semester` / `mit-6-0001`), np. `["easy", "mit-6-0001"]`;
   pytania `out_of_scope` mają tylko typ.
 
