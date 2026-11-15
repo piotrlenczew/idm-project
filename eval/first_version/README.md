@@ -6,6 +6,12 @@ punkt odniesienia dla kolejnych etapów. Retrieval (recall@k, MRR) i generacja o
 
 Ustawienia aplikacji (modele, `TOP_K`, chunking, temperature…) są w polu `config` pliku JSON.
 
+Dwa pytania (`missing-semester/debugging-profiling.md:multi-1`,
+`mit-6-0001/MIT6_0001F16_Lec12.pdf:multi-1`) w pierwszym przebiegu skończyły się błędem Ollamy
+(„model runner has unexpectedly stopped”). Uruchomiono je ponownie (`--golden` z tymi dwoma
+pytaniami, commit `8a8f440` – bez zmian w retrievalu, prompcie i chunkingu, ten sam indeks
+i `config`) i ich wiersze zastąpiły wiersze z błędem; średnie przeliczono.
+
 ## Środowisko
 
 | co | wartość |
