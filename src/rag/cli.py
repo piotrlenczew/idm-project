@@ -183,7 +183,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_agent)
 
     p = sub.add_parser("eval", help="ewaluacja na złotym zbiorze")
-    p.add_argument("--golden", default="eval/golden_sample.jsonl")
+    p.add_argument("--golden", default="eval/golden.jsonl", help="złoty zbiór (JSONL)")
     p.add_argument("--generate", action="store_true", help="oceniaj też odpowiedzi (wolniej)")
     p.add_argument("--collection")
     p.set_defaults(func=cmd_eval)
