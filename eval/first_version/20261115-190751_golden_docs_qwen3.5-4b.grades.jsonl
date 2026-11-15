@@ -1,0 +1,55 @@
+{"id": "missing-semester/agentic-coding.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/agentic-coding.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/agentic-coding.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/agentic-coding.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/agentic-coding.md:multi-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/beyond-code.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/beyond-code.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/beyond-code.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/beyond-code.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/beyond-code.md:multi-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/code-quality.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/code-quality.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/code-quality.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/code-quality.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/code-quality.md:multi-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/command-line-environment.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/command-line-environment.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/command-line-environment.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/command-line-environment.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/command-line-environment.md:easy-5", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/command-line-environment.md:multi-1", "grade": "błędna", "note": "Retrieval did not return one of the required chunks."}
+{"id": "missing-semester/command-line-environment.md:multi-2", "grade": "błędna", "note": "Errors are not conveyed via stdout. Retrieval did not return one of the needed chunks."}
+{"id": "missing-semester/course-shell.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/course-shell.md:easy-2", "grade": "błędna", "note": "Wrong refusal. Retrieval did not provided needed chunk."}
+{"id": "missing-semester/course-shell.md:easy-3", "grade": "błędna", "note": "Not expected refusal. Retrieval provided the chunk with the question but without the part containing the answer."}
+{"id": "missing-semester/course-shell.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/course-shell.md:easy-5", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/course-shell.md:multi-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/debugging-profiling.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/debugging-profiling.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/debugging-profiling.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/debugging-profiling.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/debugging-profiling.md:easy-5", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/debugging-profiling.md:multi-1", "grade": "błędna", "note": "Missing information. Retrieval did not find one of the needed chunks."}
+{"id": "missing-semester/development-environment.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/development-environment.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/development-environment.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/development-environment.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/development-environment.md:multi-1", "grade": "błędna", "note": "Incomplete answer. Retrieval did not provide one of the needed chunks."}
+{"id": "missing-semester/shipping-code.md:easy-1", "grade": "błędna", "note": "Answer is cut mid sentence."}
+{"id": "missing-semester/shipping-code.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/shipping-code.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/shipping-code.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/shipping-code.md:easy-5", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/shipping-code.md:multi-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/version-control.md:easy-1", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/version-control.md:easy-2", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/version-control.md:easy-3", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/version-control.md:easy-4", "grade": "poprawna", "note": ""}
+{"id": "missing-semester/version-control.md:multi-1", "grade": "błędna", "note": "Incorrect refusal caused by a retrieval miss."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec1.pdf:easy-1", "grade": "błędna", "note": "Incorrect refusal caused by a retrieval miss."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec1.pdf:easy-2", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec1.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec1.pdf:multi-1", "grade": "błędna", "note": "Incorrect refusal because of retrieval miss."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec10.pdf:easy-1", "grade": "poprawna", "note": ""}
