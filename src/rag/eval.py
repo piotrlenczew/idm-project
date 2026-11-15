@@ -126,7 +126,10 @@ def evaluate(
                 row[f"recall@{k}"] = recall_at_k(retrieved, item.source_ids, k)
             row["mrr"] = reciprocal_rank(retrieved, item.source_ids)
         rows.append(row)
-    return {"rows": rows, "summary": summarize(rows, ks)}
+    # Średnie osobno dla każdego tagu (typ pytania: easy / multi / out_of_scope, korpus).
+    tags = sorted({tag for row in rows for tag in row["tags"]})
+    by_tag = {tag: summarize([r for r in rows if tag in r["tags"]], ks) for tag in tags}
+    return {"rows": rows, "summary": summarize(rows, ks), "by_tag": by_tag}
 
 
 def _mean(rows: list[dict[str, Any]], key: str) -> float | None:
@@ -144,16 +147,22 @@ def summarize(rows: list[dict[str, Any]], ks: tuple[int, ...]) -> dict[str, Any]
 
 
 def to_markdown(results: dict[str, Any], title: str) -> str:
-    """Tabela wyników w Markdownie (do wklejenia w raport / slajdy)."""
+    """Wyniki w Markdownie (do wklejenia w raport / slajdy): najpierw średnie, potem pytania."""
     rows, summary = results["rows"], results["summary"]
     cols = [c for c in summary if c != "questions" and summary[c] is not None]
-    lines = [f"# {title}", "", "| id | pytanie | " + " | ".join(cols) + " |"]
+    header = " | ".join(cols)
+    lines = [f"# {title}", "", "## Średnie", "", f"| | pytań | {header} |"]
+    lines.append("|" + "---|" * (len(cols) + 2))
+    means = " | ".join(f"**{format_cell(summary[c])}**" for c in cols)
+    lines.append(f"| **wszystkie** | {summary['questions']} | {means} |")
+    for tag, tag_summary in results.get("by_tag", {}).items():
+        values = " | ".join(format_cell(tag_summary[c]) for c in cols)
+        lines.append(f"| {tag} | {tag_summary['questions']} | {values} |")
+    lines += ["", "## Pytania", "", f"| id | pytanie | {header} |"]
     lines.append("|" + "---|" * (len(cols) + 2))
     for r in rows:
         values = " | ".join(format_cell(r.get(c)) for c in cols)
         lines.append(f"| {r['id']} | {r['question']} | {values} |")
-    means = " | ".join(f"**{format_cell(summary[c])}**" for c in cols)
-    lines.append(f"| **średnia** | {summary['questions']} pytań | {means} |")
     return "\n".join(lines) + "\n"
 
 

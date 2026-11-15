@@ -127,6 +127,12 @@ def cmd_eval(args: argparse.Namespace) -> None:
         f"{summary['questions']} pytań",
         *(format_cell(summary.get(c)) for c in metric_cols),
     )
+    for tag, tag_summary in results["by_tag"].items():
+        table.add_row(
+            f"śr.: {tag}",
+            f"{tag_summary['questions']} pytań",
+            *(format_cell(tag_summary.get(c)) for c in metric_cols),
+        )
     console.print(table)
     legend = "R@k = recall@k · MRR = mean reciprocal rank · ctx = znaki kontekstu w top-k"
     if args.generate:

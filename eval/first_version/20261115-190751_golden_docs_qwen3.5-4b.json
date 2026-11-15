@@ -7015,5 +7015,67 @@
     "citation_hit": 0.857,
     "inline_cited": 0.643,
     "latency_s": 2.983
+  },
+  "by_tag": {
+    "easy": {
+      "questions": 80,
+      "recall@1": 0.738,
+      "recall@3": 0.912,
+      "recall@5": 0.963,
+      "mrr": 0.828,
+      "ctx_chars": 1465.975,
+      "refusal_ok": 0.963,
+      "citation_hit": 0.887,
+      "inline_cited": 0.613,
+      "latency_s": 3.142
+    },
+    "missing-semester": {
+      "questions": 50,
+      "recall@1": 0.77,
+      "recall@3": 0.86,
+      "recall@5": 0.94,
+      "mrr": 0.889,
+      "ctx_chars": 1650.2,
+      "refusal_ok": 0.959,
+      "citation_hit": 0.918,
+      "inline_cited": 0.714,
+      "latency_s": 2.968
+    },
+    "mit-6-0001": {
+      "questions": 50,
+      "recall@1": 0.55,
+      "recall@3": 0.78,
+      "recall@5": 0.83,
+      "mrr": 0.739,
+      "ctx_chars": 1216.04,
+      "refusal_ok": 0.939,
+      "citation_hit": 0.796,
+      "inline_cited": 0.571,
+      "latency_s": 3.233
+    },
+    "multi": {
+      "questions": 20,
+      "recall@1": 0.35,
+      "recall@3": 0.45,
+      "recall@5": 0.575,
+      "mrr": 0.758,
+      "ctx_chars": 1301.7,
+      "refusal_ok": 0.889,
+      "citation_hit": 0.722,
+      "inline_cited": 0.778,
+      "latency_s": 2.917
+    },
+    "out_of_scope": {
+      "questions": 10,
+      "recall@1": null,
+      "recall@3": null,
+      "recall@5": null,
+      "mrr": null,
+      "ctx_chars": 1478.3,
+      "refusal_ok": 0.8,
+      "citation_hit": null,
+      "inline_cited": null,
+      "latency_s": 1.831
+    }
   }
 }
