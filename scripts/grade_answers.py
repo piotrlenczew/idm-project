@@ -59,11 +59,27 @@ def show(row: dict[str, Any], gold: dict[str, Any], top_k: int, texts: dict[str,
     print(f"Oczekiwane źródła: {', '.join(gold['source_ids']) or '– (spoza materiałów)'}")
     print(f"\nOdpowiedź modelu: {row['answer']}")
     context = row["retrieved"][:top_k]  # model widział pierwsze TOP_K chunków
+    expected = set(gold["source_ids"])
     for n, chunk in enumerate(context, start=1):
-        cited = n in row["citations"]
-        print(f"\n[{n}] {', '.join(chunk['source_ids'])}{' (cytowany)' if cited else ''}")
-        if cited:
+        # oczekiwany = chunk z oczekiwanego źródła (sekcji / strony); tekst pokazujemy dla
+        # cytowanych i oczekiwanych, żeby było widać, na czym model się oparł i co pominął
+        marks = [
+            m
+            for m, on in [
+                ("cytowany", n in row["citations"]),
+                ("oczekiwany", bool(expected & set(chunk["source_ids"]))),
+            ]
+            if on
+        ]
+        print(
+            f"\n[{n}] {', '.join(chunk['source_ids'])}"
+            + (f" ({', '.join(marks)})" if marks else "")
+        )
+        if marks:
             print(chunk_text(chunk, texts))
+    missing = expected - {sid for chunk in context for sid in chunk["source_ids"]}
+    if missing:
+        print(f"\nOczekiwane źródła, których nie było w kontekście: {', '.join(sorted(missing))}")
 
 
 def summary(grades: dict[str, dict[str, Any]], rows: list[dict[str, Any]]) -> None:
