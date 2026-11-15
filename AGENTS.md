@@ -43,7 +43,9 @@ Dane i skrypty:
 - `eval/golden.jsonl` – złoty zestaw pytań projektu (opis w README). Pytania pisze człowiek;
   nie generuj ich ani nie zmieniaj bez prośby.
 - `scripts/` – `fetch_corpus.py` (tylko pobiera pliki), `show_blocks.py` (wynik parsowania przed
-  chunkingiem), `build_golden.py` (losuje bloki według rozkładu i dopisuje pytania do złotego zestawu).
+  chunkingiem), `build_golden.py` (losuje bloki według rozkładu i dopisuje pytania do złotego zestawu),
+  `grade_answers.py` (ręczna ocena odpowiedzi z przebiegu ewaluacji; plik `<wyniki>.grades.jsonl`
+  obok wyników).
 
 Kluczowe kontrakty:
 - **Chunk payload** w Qdrancie: `text`, `source`, `page`|`section`, `source_ids` (lista), `chunking`,
@@ -73,6 +75,7 @@ make ask Q="..." | make agent Q="..."  # uv run rag ask / agent
 uv run python scripts/fetch_corpus.py  # pobranie korpusu do DATA_DIR
 uv run python scripts/show_blocks.py [ścieżki] [--full]  # wynik parsowania, bez Ollamy i Qdranta
 uv run python scripts/build_golden.py                    # interaktywne pisanie złotego zestawu
+uv run python scripts/grade_answers.py <wyniki.json> [--summary]  # ręczna ocena odpowiedzi
 make eval [ARGS=--generate]            # uv run rag eval
 make test                              # pytest, bez sieci – uruchamiaj po każdej zmianie
 make lint                              # ruff check + ruff format --check
