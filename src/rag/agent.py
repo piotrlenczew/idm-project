@@ -93,7 +93,7 @@ def run_agent(
         for call in message.tool_calls:
             args = json.loads(call.function.arguments or "{}")
             tool = tools.get(call.function.name)
-            result = tool(**args) if tool else f"Nieznane narzędzie: {call.function.name}"
+            result = tool(**args) if tool else f"Unknown tool: {call.function.name}"
             record(AgentStep("tool_call", result, {"name": call.function.name, **args}))
             messages.append({"role": "tool", "tool_call_id": call.id, "content": result})
 

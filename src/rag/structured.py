@@ -71,13 +71,13 @@ def _tool(client: OpenAI, settings: Settings, messages: Messages, schema: type[T
         "type": "function",
         "function": {
             "name": TOOL_NAME,
-            "description": "Zwróć ostateczną odpowiedź w wymaganym formacie.",
+            "description": "Return the final answer in the required format.",
             "parameters": schema.model_json_schema(),
         },
     }
     # Część serwerów (np. Ollama) nie wymusza `tool_choice` – dodatkowa instrukcja w prompcie
     # wyraźnie zwiększa szansę, że model faktycznie wywoła narzędzie.
-    nudge = {"role": "system", "content": f"Odpowiedz, wywołując narzędzie {TOOL_NAME}."}
+    nudge = {"role": "system", "content": f"Answer by calling the {TOOL_NAME} tool."}
     response = client.chat.completions.create(
         **chat_kwargs(settings),
         messages=[*messages, nudge],
@@ -106,8 +106,8 @@ def extract_json(text: str) -> str:
 
 def _prompt(client: OpenAI, settings: Settings, messages: Messages, schema: type[T]) -> T:
     instruction = (
-        "Odpowiedz WYŁĄCZNIE jednym obiektem JSON zgodnym z tym JSON Schema "
-        "(bez komentarzy i tekstu poza JSON-em):\n"
+        "Answer with ONLY a single JSON object that matches this JSON Schema "
+        "(no comments and no text outside the JSON):\n"
         + json.dumps(schema.model_json_schema(), ensure_ascii=False)
     )
     attempt: Messages = [*messages, {"role": "system", "content": instruction}]
@@ -122,7 +122,7 @@ def _prompt(client: OpenAI, settings: Settings, messages: Messages, schema: type
             attempt = [
                 *attempt,
                 {"role": "assistant", "content": content},
-                {"role": "user", "content": f"Ten JSON jest niepoprawny: {err}. Popraw go."},
+                {"role": "user", "content": f"This JSON is invalid: {err}. Fix it."},
             ]
     raise AssertionError("unreachable")
 

@@ -41,9 +41,9 @@ class Answer(BaseModel):
     Odmowa odpowiedzi = pusta lista `citations` (nie potrzebujemy osobnej flagi).
     """
 
-    answer: str = Field(description="Odpowiedź ze znacznikami źródeł w tekście, np. [1].")
+    answer: str = Field(description="The answer with source markers in the text, e.g. [1].")
     citations: list[int] = Field(
-        default_factory=list, description="Numery fragmentów kontekstu użytych w odpowiedzi."
+        default_factory=list, description="Numbers of the context fragments used in the answer."
     )
 
     @field_validator("citations", mode="before")
