@@ -64,10 +64,14 @@ def load_markdown(path: Path) -> list[Block]:
         intro = text[: headings[0][0]] if headings else text
         if intro.strip():
             blocks.append(Block(intro, {"source": source, "section": ""}))
+    seen: Counter[str] = Counter()
     for i, (start, heading_end) in enumerate(headings):
         end = headings[i + 1][0] if i + 1 < len(headings) else len(text)
         title = text[start:heading_end].strip().lstrip("#").strip()
-        blocks.append(Block(text[start:end], {"source": source, "section": title}))
+        # Powtórzony nagłówek dostaje numer („Debugging (2)”), żeby `source_ids` były jednoznaczne.
+        seen[title] += 1
+        section = title if seen[title] == 1 else f"{title} ({seen[title]})"
+        blocks.append(Block(text[start:end], {"source": source, "section": section}))
     return blocks
 
 
