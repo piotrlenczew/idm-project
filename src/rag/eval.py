@@ -86,10 +86,17 @@ def evaluate(
     for item in items:
         row: dict[str, Any] = {"id": item.id, "question": item.question, "tags": item.tags}
         hits: list[Hit] = retrieve(item.question, settings, k=max_k, collection=collection)
+        # Pobrane chunki (źródło + podobieństwo) – do analizy błędów bez ponownego retrievalu.
+        row["retrieved"] = [{"source_ids": h.source_ids, "score": h.score} for h in hits]
+        result = None
         if generate:
-            result = answer_question(
-                item.question, settings, k=settings.top_k, collection=collection
-            )
+            try:
+                result = answer_question(
+                    item.question, settings, k=settings.top_k, collection=collection
+                )
+            except Exception as err:  # jedno nieudane pytanie nie przerywa całego przebiegu
+                row["error"] = f"{type(err).__name__}: {err}"
+        if result is not None:
             cited = {sid for h in result.cited_hits() for sid in h.source_ids}
             row |= {
                 "answer": result.answer.answer,
