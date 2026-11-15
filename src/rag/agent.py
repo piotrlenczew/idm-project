@@ -19,21 +19,22 @@ from rag.config import Settings
 from rag.llm import chat_kwargs, llm_client
 from rag.retrieve import retrieve
 
-SYSTEM_PROMPT = """Jesteś asystentem, który odpowiada na pytania o dokumenty z bazy wiedzy.
-Zanim odpowiesz, użyj narzędzia search_docs (możesz kilka razy, z różnymi zapytaniami).
-Odpowiadaj po polsku, tylko na podstawie wyników wyszukiwania, i podawaj źródła w nawiasach,
-np. (rag_wprowadzenie.md › Czym jest RAG). Jeśli wyniki nie zawierają odpowiedzi, powiedz to wprost."""
+# Prompt i opis narzędzia po angielsku, bo materiały i zestaw testowy są po angielsku.
+SYSTEM_PROMPT = """You are an assistant that answers questions about the documents in a knowledge base.
+Before answering, use the search_docs tool (you may call it several times, with different queries).
+Answer in English, only based on the search results, and give the sources in parentheses,
+e.g. (version-control.md › Basics). If the results do not contain the answer, say so plainly."""
 
 SEARCH_DOCS_TOOL: dict[str, Any] = {
     "type": "function",
     "function": {
         "name": "search_docs",
-        "description": "Przeszukuje bazę dokumentów i zwraca najbardziej pasujące fragmenty.",
+        "description": "Searches the document base and returns the best matching fragments.",
         "parameters": {
             "type": "object",
             "properties": {
-                "query": {"type": "string", "description": "Zapytanie wyszukiwania."},
-                "k": {"type": "integer", "description": "Liczba fragmentów (1-10).", "default": 4},
+                "query": {"type": "string", "description": "Search query."},
+                "k": {"type": "integer", "description": "Number of fragments (1-10).", "default": 4},
             },
             "required": ["query"],
         },
@@ -45,8 +46,8 @@ def search_docs(settings: Settings, query: str, k: int = 4) -> str:
     """Implementacja narzędzia: retrieval i sformatowanie wyników jako tekst dla modelu."""
     hits = retrieve(query, settings, k=max(1, min(int(k), 10)))
     if not hits:
-        return "Brak wyników."
-    return "\n\n".join(f"Źródło: {h.label()}\n{h.text}" for h in hits)
+        return "No results."
+    return "\n\n".join(f"Source: {h.label()}\n{h.text}" for h in hits)
 
 
 @dataclass

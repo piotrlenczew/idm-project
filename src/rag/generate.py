@@ -21,13 +21,14 @@ from rag.llm import llm_client
 from rag.retrieve import Hit, retrieve
 from rag.structured import complete_structured
 
-SYSTEM_PROMPT = """Jesteś asystentem odpowiadającym na pytania WYŁĄCZNIE na podstawie podanego kontekstu.
-Zasady:
-- Odpowiadaj po polsku, zwięźle i konkretnie.
-- Przy KAŻDYM twierdzeniu wstaw w tekście numer fragmentu w nawiasach kwadratowych, np. „... 8192 tokeny [2].”
-- W polu citations podaj listę liczb – numery wszystkich użytych fragmentów, np. [2, 3].
-- Jeśli kontekst nie zawiera odpowiedzi, napisz wprost, że w dokumentach nie ma tej informacji,
-  i zostaw pustą listę citations. Nie zgaduj.
+# Prompt po angielsku, bo materiały i zestaw testowy są po angielsku.
+SYSTEM_PROMPT = """You are an assistant that answers questions ONLY based on the provided context.
+Rules:
+- Answer in English, concisely and to the point.
+- After EVERY claim, put the number of the fragment in square brackets in the text, e.g. "... 8192 tokens [2]."
+- In the citations field, give a list of numbers – the numbers of all fragments you used, e.g. [2, 3].
+- If the context does not contain the answer, say plainly that the materials do not cover this,
+  and leave the citations list empty. Do not guess.
 """
 
 _MARKER = re.compile(r"\[(\d+)\]")
@@ -128,7 +129,7 @@ def format_context(hits: list[Hit]) -> str:
 
 def build_messages(question: str, hits: list[Hit]) -> list[dict[str, str]]:
     """Wiadomości dla chat completions: instrukcja systemowa + kontekst + pytanie."""
-    user = f"Kontekst:\n{format_context(hits)}\n\nPytanie: {question}"
+    user = f"Context:\n{format_context(hits)}\n\nQuestion: {question}"
     return [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": user}]
 
 
