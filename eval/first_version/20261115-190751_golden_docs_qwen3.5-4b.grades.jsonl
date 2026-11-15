@@ -53,3 +53,56 @@
 {"id": "mit-6-0001/MIT6_0001F16_Lec1.pdf:easy-3", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec1.pdf:multi-1", "grade": "błędna", "note": "Incorrect refusal because of retrieval miss."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec10.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec10.pdf:easy-2", "grade": "poprawna", "note": "Correct; the example from p19 is slightly garbled (O(n²) + 2n + 2 instead of n² + 2n + 2) due to PDF parsing."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec10.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec10.pdf:easy-4", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec10.pdf:multi-1", "grade": "błędna", "note": "Incorrect; identifies intersection as quadratic (p36) but lists example operations instead of the lower complexity classes; p24 with the list of classes was not retrieved."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec11.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec11.pdf:easy-2", "grade": "poprawna", "note": "Correct; cites Lec10 p24 (same ordered list) instead of the expected Lec11 p5; superscripts lost in PDF parsing (O(nc), O(cn))."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec11.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec11.pdf:easy-4", "grade": "błędna", "note": "Incorrect; confuses a constant number of operations per iteration with a constant number of iterations (its own example is O(n)); expected Lec11 p8 was not retrieved."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec11.pdf:multi-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-2", "grade": "błędna", "note": "Incorrect (borderline); mentions a sorted list but conflates it with \"sort first, then search\", concluding the condition is never true, which implies binary search never pays off."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-4", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:multi-1", "grade": "poprawna", "note": "Correct; only the merge sort part is grounded (p19, p22-24); p8 on bisection was not retrieved; no inline citation markers."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:easy-2", "grade": "błędna", "note": "Incorrect; answers \"No\" by mixing up the direction: p23 says a for loop can always be rewritten as a while loop, but the model used the reverse statement about while to for."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec3.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec3.pdf:easy-2", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec3.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec4.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec4.pdf:easy-2", "grade": "poprawna", "note": "Correct; lists all expected characteristics from p11; extra points are loosely related (functions as arguments slightly misphrased, Lec10 p12 on choosing input for complexity is off-topic)."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec4.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec4.pdf:multi-1", "grade": "błędna", "note": "Incorrect; refused because retrieval returned only lecture title pages (p1 of several lectures) instead of p6/p7."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec5.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec5.pdf:easy-2", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec5.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-2", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-4", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:multi-1", "grade": "błędna", "note": "Incorrect; refused because p10 with recursive factorial was not retrieved (p17 was in context but not used)."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:easy-2", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:multi-1", "grade": "poprawna", "note": "Correct (borderline); raise an exception and avoid error values the caller must check, grounded in p24; misses \"no obvious value to return\"; expected p23/p34 not retrieved."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:easy-1", "grade": "błędna", "note": "Incorrect; gives only c.distance(other) and claims there is no second way; Coordinate.distance(c, zero) from p14 was not retrieved."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:easy-2", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-1", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-2", "grade": "poprawna", "note": "Correct (borderline); contains the expected fact from p15 but is needlessly hedged, claiming the context does not state it explicitly."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:multi-1", "grade": "poprawna", "note": "Correct; data attributes vary, methods (procedural attributes) are shared, grounded in p4 and Lec8 p9; p7 not retrieved; no inline citation markers."}
+{"id": "out_of_scope-1", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-2", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-3", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-4", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-5", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-6", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-7", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-8", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-9", "grade": "poprawna_odmowa", "note": ""}
+{"id": "out_of_scope-10", "grade": "poprawna_odmowa", "note": ""}
