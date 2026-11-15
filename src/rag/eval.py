@@ -86,8 +86,11 @@ def evaluate(
     for item in items:
         row: dict[str, Any] = {"id": item.id, "question": item.question, "tags": item.tags}
         hits: list[Hit] = retrieve(item.question, settings, k=max_k, collection=collection)
-        # Pobrane chunki (źródło + podobieństwo) – do analizy błędów bez ponownego retrievalu.
-        row["retrieved"] = [{"source_ids": h.source_ids, "score": h.score} for h in hits]
+        # Pobrane chunki (źródło, podobieństwo, tekst) – do analizy błędów bez ponownego retrievalu;
+        # model widział pierwsze TOP_K z nich (cytowanie [n] = retrieved[n - 1]).
+        row["retrieved"] = [
+            {"source_ids": h.source_ids, "score": h.score, "text": h.text} for h in hits
+        ]
         result = None
         if generate:
             try:
