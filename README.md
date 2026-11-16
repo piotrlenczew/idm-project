@@ -191,14 +191,14 @@ w `.env` `CHUNK_SIZE=600`, `CHUNK_OVERLAP=100`, `TOP_K=4` i zrób `make ingest A
 
 Metryki automatyczne:
 
-| | pytań | recall@1 | recall@5 | MRR | refusal_ok | citation_hit | inline_cited |
-|---|---|---|---|---|---|---|---|
-| **wszystkie** | 110 | 0.67 | 0.89 | 0.82 | 0.94 | 0.87 | 0.65 |
-| easy | 80 | 0.74 | 0.96 | 0.83 | 0.96 | 0.89 | 0.61 |
-| multi | 20 | 0.38 | 0.60 | 0.79 | 0.90 | 0.80 | 0.80 |
-| out_of_scope | 10 | – | – | – | 0.80 | – | – |
-| Missing Semester | 50 | 0.77 | 0.94 | 0.89 | 0.96 | 0.92 | 0.72 |
-| MIT 6.0001 | 50 | 0.56 | 0.84 | 0.75 | 0.94 | 0.82 | 0.58 |
+| | pytań | recall@1 | recall@5 | MRR | refusal_ok | citation_hit | inline_cited | kontekst [znaki] | czas [s] |
+|---|---|---|---|---|---|---|---|---|---|
+| **wszystkie** | 110 | 0.67 | 0.89 | 0.82 | 0.94 | 0.87 | 0.65 | 1436 | 3.04 |
+| easy | 80 | 0.74 | 0.96 | 0.83 | 0.96 | 0.89 | 0.61 | 1466 | 3.14 |
+| multi | 20 | 0.38 | 0.60 | 0.79 | 0.90 | 0.80 | 0.80 | 1296 | 3.23 |
+| out_of_scope | 10 | – | – | – | 0.80 | – | – | 1478 | 1.83 |
+| Missing Semester | 50 | 0.77 | 0.94 | 0.89 | 0.96 | 0.92 | 0.72 | 1650 | 2.99 |
+| MIT 6.0001 | 50 | 0.56 | 0.84 | 0.75 | 0.94 | 0.82 | 0.58 | 1214 | 3.33 |
 
 Ręczna ocena poprawności (wszystkie 110 pytań):
 
