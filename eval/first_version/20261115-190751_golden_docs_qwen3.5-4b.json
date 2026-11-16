@@ -4391,7 +4391,7 @@
     },
     {
       "id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:multi-1",
-      "question": "What approach to solving a problem is shared by both bisection sort and merge sort?",
+      "question": "What approach to solving a problem is shared by both bisection search and merge sort?",
       "tags": [
         "multi",
         "mit-6-0001"
@@ -4399,61 +4399,61 @@
       "retrieved": [
         {
           "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p19"
+            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p6"
           ],
-          "score": 0.704355,
+          "score": 0.6866317,
           "start": 0,
-          "length": 336
+          "length": 415
+        },
+        {
+          "source_ids": [
+            "mit-6-0001/MIT6_0001F16_Lec11.pdf#p11"
+          ],
+          "score": 0.67784655,
+          "start": 0,
+          "length": 411
+        },
+        {
+          "source_ids": [
+            "mit-6-0001/MIT6_0001F16_Lec11.pdf#p15"
+          ],
+          "score": 0.67473847,
+          "start": 0,
+          "length": 272
         },
         {
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec12.pdf#p24"
           ],
-          "score": 0.69820297,
+          "score": 0.6725704,
           "start": 0,
           "length": 68
         },
         {
           "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p22"
+            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p19"
           ],
-          "score": 0.69234467,
+          "score": 0.6713692,
           "start": 0,
-          "length": 181
-        },
-        {
-          "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p23"
-          ],
-          "score": 0.67867273,
-          "start": 0,
-          "length": 143
-        },
-        {
-          "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p21"
-          ],
-          "score": 0.6651883,
-          "start": 0,
-          "length": 236
+          "length": 336
         }
       ],
-      "answer": "Both approaches share the divide-and-conquer method.",
+      "answer": "Both bisection search and merge sort use the divide-and-conquer approach [1][2][3][4].",
       "citations": [
         1,
         2,
         3,
         4
       ],
-      "latency_s": 1.34,
+      "latency_s": 2.3400000000000003,
       "structured_mode": "native",
       "refusal_ok": true,
       "citation_hit": true,
-      "inline_cited": false,
-      "ctx_chars": 728,
+      "inline_cited": true,
+      "ctx_chars": 1166,
       "recall@1": 0.5,
       "recall@3": 0.5,
-      "recall@5": 0.5,
+      "recall@5": 1.0,
       "mrr": 1.0
     },
     {
@@ -4652,7 +4652,7 @@
     },
     {
       "id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:multi-1",
-      "question": "How does python know which statements belong to",
+      "question": "How does Python know which statements belong to a block of code, and what is the body of the for loop that prints numbers from 0 to 4 in the lecture's example?",
       "tags": [
         "multi",
         "mit-6-0001"
@@ -4662,53 +4662,54 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec2.pdf#p12"
           ],
-          "score": 0.5860971,
+          "score": 0.6836873,
           "start": 0,
           "length": 447
         },
         {
           "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec1.pdf#p23"
+            "mit-6-0001/MIT6_0001F16_Lec4.pdf#p27"
           ],
-          "score": 0.53099906,
+          "score": 0.5811299,
           "start": 0,
-          "length": 380
+          "length": 145
         },
         {
           "source_ids": [
-            "missing-semester/agentic-coding.md#Use cases"
+            "mit-6-0001/MIT6_0001F16_Lec2.pdf#p1"
           ],
-          "score": 0.50676966,
-          "start": 4330,
-          "length": 453
-        },
-        {
-          "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec2.pdf#p21"
-          ],
-          "score": 0.49559173,
+          "score": 0.5729902,
           "start": 0,
-          "length": 244
+          "length": 106
         },
         {
           "source_ids": [
-            "missing-semester/code-quality.md#Linting"
+            "mit-6-0001/MIT6_0001F16_Lec2.pdf#p22"
           ],
-          "score": 0.4871633,
-          "start": 858,
-          "length": 549
+          "score": 0.5629188,
+          "start": 0,
+          "length": 191
+        },
+        {
+          "source_ids": [
+            "mit-6-0001/MIT6_0001F16_Lec2.pdf#p17"
+          ],
+          "score": 0.55817044,
+          "start": 0,
+          "length": 326
         }
       ],
-      "answer": "Python knows which statements belong to a block based on indentation [1].",
+      "answer": "Python determines which statements belong to a block of code based on indentation [1]. The body of the `for` loop that iterates through numbers (specifically 5, 7, 9 in the provided example) consists of two lines: `mysum += i` and the conditional check `if mysum == 5: break`. Note that the specific range `0 to 4` mentioned in your question does not appear in the lecture slides; the slide shows a loop using `range(5, 11, 2)` [4].",
       "citations": [
-        1
+        1,
+        4
       ],
-      "latency_s": 1.5499999999999998,
+      "latency_s": 4.38,
       "structured_mode": "native",
       "refusal_ok": true,
       "citation_hit": true,
       "inline_cited": true,
-      "ctx_chars": 1524,
+      "ctx_chars": 889,
       "recall@1": 0.5,
       "recall@3": 0.5,
       "recall@5": 0.5,
@@ -5614,7 +5615,7 @@
     },
     {
       "id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:multi-1",
-      "question": "In the example of recursive multiplication taht is used for explaining the relevance of induction in coding the additional step guarantees correctness for size b. What plays that role in recursive factorial?",
+      "question": "In the example of recursive multiplication that is used for explaining the relevance of induction in coding the addition step guarantees correctness for size b. What plays that role in recursive factorial?",
       "tags": [
         "multi",
         "mit-6-0001"
@@ -5624,7 +5625,7 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec6.pdf#p17"
           ],
-          "score": 0.6956842,
+          "score": 0.69415975,
           "start": 0,
           "length": 435
         },
@@ -5632,7 +5633,7 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec6.pdf#p14"
           ],
-          "score": 0.62855357,
+          "score": 0.6143297,
           "start": 0,
           "length": 543
         },
@@ -5640,7 +5641,7 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec6.pdf#p54"
           ],
-          "score": 0.59910893,
+          "score": 0.5883765,
           "start": 0,
           "length": 197
         },
@@ -5648,7 +5649,7 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec6.pdf#p16"
           ],
-          "score": 0.567973,
+          "score": 0.57124615,
           "start": 0,
           "length": 387
         },
@@ -5656,14 +5657,14 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec11.pdf#p22"
           ],
-          "score": 0.5667623,
+          "score": 0.55599403,
           "start": 0,
           "length": 467
         }
       ],
-      "answer": "The context does not provide information about a recursive factorial function or how an additional step would guarantee its correctness via induction.",
+      "answer": "The provided context does not contain information about a recursive factorial function or explain what plays the role of the addition step in it.",
       "citations": [],
-      "latency_s": 1.72,
+      "latency_s": 2.03,
       "structured_mode": "native",
       "refusal_ok": false,
       "citation_hit": false,
@@ -6127,7 +6128,7 @@
     },
     {
       "id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:multi-1",
-      "question": "What are the two parts of an object's data abstraction and",
+      "question": "What are the two parts of an object's data abstraction, and what are they for a Python list?",
       "tags": [
         "multi",
         "mit-6-0001"
@@ -6137,7 +6138,7 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec8.pdf#p4"
           ],
-          "score": 0.70051265,
+          "score": 0.614185,
           "start": 0,
           "length": 276
         },
@@ -6145,7 +6146,7 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec9.pdf#p25"
           ],
-          "score": 0.63946056,
+          "score": 0.5914922,
           "start": 0,
           "length": 289
         },
@@ -6153,41 +6154,42 @@
           "source_ids": [
             "mit-6-0001/MIT6_0001F16_Lec8.pdf#p20"
           ],
-          "score": 0.6030529,
+          "score": 0.56532645,
           "start": 0,
           "length": 403
         },
         {
           "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec12.pdf#p33"
+            "mit-6-0001/MIT6_0001F16_Lec5.pdf#p11"
           ],
-          "score": 0.5935433,
+          "score": 0.559101,
           "start": 0,
-          "length": 318
+          "length": 393
         },
         {
           "source_ids": [
-            "mit-6-0001/MIT6_0001F16_Lec4.pdf#p10"
+            "mit-6-0001/MIT6_0001F16_Lec8.pdf#p2"
           ],
-          "score": 0.5904114,
+          "score": 0.548238,
           "start": 0,
-          "length": 388
+          "length": 427
         }
       ],
-      "answer": "According to the provided context, the two parts of an object's data abstraction are:\n\n1. An internal representation through data attributes.\n2. An interface for interacting with the object through methods (aka procedures/functions).\n\nThese components define behaviors while hiding the implementation [1].",
+      "answer": "According to the provided context, the two parts of an object's data abstraction are:\n\n1. An internal representation through **data attributes** [1].\n2. An interface for interacting with the object through **methods** (aka procedures/functions) which define behaviors but hide implementation [1].\n\nRegarding a Python list specifically, the context notes that lists are Python objects and have data, methods, and functions. It provides an example of a method: `L.append(element)`, which adds elements to the end of the list and mutates it [4]. However, the specific internal representation (data attributes) for a Python list is not explicitly detailed in the provided text.\n\nCitations: [1, 4]",
       "citations": [
-        1
+        1,
+        4
       ],
-      "latency_s": 2.57,
+      "latency_s": 4.95,
       "structured_mode": "native",
       "refusal_ok": true,
-      "citation_hit": false,
+      "citation_hit": true,
       "inline_cited": true,
-      "ctx_chars": 1286,
-      "recall@1": 0.0,
+      "ctx_chars": 1361,
+      "recall@1": 0.5,
       "recall@3": 0.5,
       "recall@5": 0.5,
-      "mrr": 0.3333333333333333
+      "mrr": 1.0
     },
     {
       "id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-1",
@@ -7027,15 +7029,15 @@
   ],
   "summary": {
     "questions": 110,
-    "recall@1": 0.66,
+    "recall@1": 0.665,
     "recall@3": 0.82,
-    "recall@5": 0.885,
-    "mrr": 0.814,
-    "ctx_chars": 1437.227,
+    "recall@5": 0.89,
+    "mrr": 0.821,
+    "ctx_chars": 1436.118,
     "refusal_ok": 0.936,
-    "citation_hit": 0.86,
-    "inline_cited": 0.64,
-    "latency_s": 2.978
+    "citation_hit": 0.87,
+    "inline_cited": 0.65,
+    "latency_s": 3.038
   },
   "by_tag": {
     "easy": {
@@ -7064,27 +7066,27 @@
     },
     "mit-6-0001": {
       "questions": 50,
-      "recall@1": 0.55,
+      "recall@1": 0.56,
       "recall@3": 0.78,
-      "recall@5": 0.83,
-      "mrr": 0.739,
-      "ctx_chars": 1216.04,
+      "recall@5": 0.84,
+      "mrr": 0.752,
+      "ctx_chars": 1213.6,
       "refusal_ok": 0.94,
-      "citation_hit": 0.8,
-      "inline_cited": 0.56,
-      "latency_s": 3.195
+      "citation_hit": 0.82,
+      "inline_cited": 0.58,
+      "latency_s": 3.325
     },
     "multi": {
       "questions": 20,
-      "recall@1": 0.35,
+      "recall@1": 0.375,
       "recall@3": 0.45,
-      "recall@5": 0.575,
-      "mrr": 0.758,
-      "ctx_chars": 1301.7,
+      "recall@5": 0.6,
+      "mrr": 0.792,
+      "ctx_chars": 1295.6,
       "refusal_ok": 0.9,
-      "citation_hit": 0.75,
-      "inline_cited": 0.75,
-      "latency_s": 2.899
+      "citation_hit": 0.8,
+      "inline_cited": 0.8,
+      "latency_s": 3.225
     },
     "out_of_scope": {
       "questions": 10,

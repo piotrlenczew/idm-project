@@ -193,35 +193,35 @@ Metryki automatyczne:
 
 | | pytań | recall@1 | recall@5 | MRR | refusal_ok | citation_hit | inline_cited |
 |---|---|---|---|---|---|---|---|
-| **wszystkie** | 110 | 0.66 | 0.89 | 0.81 | 0.94 | 0.86 | 0.64 |
+| **wszystkie** | 110 | 0.67 | 0.89 | 0.82 | 0.94 | 0.87 | 0.65 |
 | easy | 80 | 0.74 | 0.96 | 0.83 | 0.96 | 0.89 | 0.61 |
-| multi | 20 | 0.35 | 0.57 | 0.76 | 0.90 | 0.75 | 0.75 |
+| multi | 20 | 0.38 | 0.60 | 0.79 | 0.90 | 0.80 | 0.80 |
 | out_of_scope | 10 | – | – | – | 0.80 | – | – |
 | Missing Semester | 50 | 0.77 | 0.94 | 0.89 | 0.96 | 0.92 | 0.72 |
-| MIT 6.0001 | 50 | 0.55 | 0.83 | 0.74 | 0.94 | 0.80 | 0.56 |
+| MIT 6.0001 | 50 | 0.56 | 0.84 | 0.75 | 0.94 | 0.82 | 0.58 |
 
-Ręczna ocena poprawności (108 ze 110 pytań; dwa pytania z uciętą treścią pominięto):
+Ręczna ocena poprawności (wszystkie 110 pytań):
 
 | | ocenionych | poprawna | błędna | poprawna odmowa |
 |---|---|---|---|---|
-| **wszystkie** | 108 | 81 (75%) | 17 (16%) | 10 (9%) |
+| **wszystkie** | 110 | 81 (74%) | 19 (17%) | 10 (9%) |
 | easy | 80 | 72 (90%) | 8 (10%) | – |
-| multi | 18 | 9 (50%) | 9 (50%) | – |
+| multi | 20 | 9 (45%) | 11 (55%) | – |
 | out_of_scope | 10 | – | – | 10 (100%) |
 | Missing Semester | 50 | 42 (84%) | 8 (16%) | – |
-| MIT 6.0001 | 48 | 39 (81%) | 9 (19%) | – |
+| MIT 6.0001 | 50 | 39 (78%) | 11 (22%) | – |
 
 Wnioski (kierunki dla E2):
-- **pytania `multi`** to najsłabszy punkt (50% poprawnych): drugi oczekiwany fragment zwykle nie
-  trafia do kontekstu (recall@5 = 0.57); miejsce zajmują strony tytułowe PDF-ów i nakładające się
+- **pytania `multi`** to najsłabszy punkt (45% poprawnych): drugi oczekiwany fragment zwykle nie
+  trafia do kontekstu (recall@5 = 0.60); miejsce zajmują strony tytułowe PDF-ów i nakładające się
   chunki z tej samej strony,
-- **PDF-y** wypadają gorzej w retrievalu (recall@1 0.55 vs 0.77): parsowanie gubi ligatury
+- **PDF-y** wypadają gorzej w retrievalu (recall@1 0.56 vs 0.77): parsowanie gubi ligatury
   („Ame” zamiast „time”), indeksy górne (`O(nc)` zamiast O(n^c)) i miesza kolumny,
 - **odmowy** są poprawne we wszystkich 10 przypadkach, ale automatyczne `refusal_ok` daje 0.80 –
   model czasem odmawia w tekście, a mimo to podaje cytowania (odmowa jest wykrywana po pustej
   liście cytowań),
 - **błędy rozumowania** przy dobrym kontekście są rzadkie (np. odwrócenie kierunku „for → while”),
-  a znaczniki `[n]` w tekście ma tylko 64% odpowiedzi.
+  a znaczniki `[n]` w tekście ma tylko 65% odpowiedzi.
 
 ## Starter
 

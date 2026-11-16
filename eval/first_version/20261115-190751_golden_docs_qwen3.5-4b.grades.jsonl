@@ -66,10 +66,11 @@
 {"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-2", "grade": "błędna", "note": "Incorrect (borderline); mentions a sorted list but conflates it with \"sort first, then search\", concluding the condition is never true, which implies binary search never pays off."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-3", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:easy-4", "grade": "poprawna", "note": ""}
-{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:multi-1", "grade": "poprawna", "note": "Correct; only the merge sort part is grounded (p19, p22-24); p8 on bisection was not retrieved; no inline citation markers."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec12.pdf:multi-1", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:easy-1", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:easy-2", "grade": "błędna", "note": "Incorrect; answers \"No\" by mixing up the direction: p23 says a for loop can always be rewritten as a while loop, but the model used the reverse statement about while to for."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec2.pdf:multi-1", "grade": "błędna", "note": "Wrong fragment cited. Expected one not retrieved."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec3.pdf:easy-1", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec3.pdf:easy-2", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec3.pdf:easy-3", "grade": "poprawna", "note": ""}
@@ -84,7 +85,7 @@
 {"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-2", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-3", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:easy-4", "grade": "poprawna", "note": ""}
-{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:multi-1", "grade": "błędna", "note": "Incorrect; refused because p10 with recursive factorial was not retrieved (p17 was in context but not used)."}
+{"id": "mit-6-0001/MIT6_0001F16_Lec6.pdf:multi-1", "grade": "błędna", "note": "Incorrect refusal dues to not retrieved context."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:easy-1", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:easy-2", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec7.pdf:easy-3", "grade": "poprawna", "note": ""}
@@ -92,6 +93,7 @@
 {"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:easy-1", "grade": "błędna", "note": "Incorrect; gives only c.distance(other) and claims there is no second way; Coordinate.distance(c, zero) from p14 was not retrieved."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:easy-2", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:easy-3", "grade": "poprawna", "note": ""}
+{"id": "mit-6-0001/MIT6_0001F16_Lec8.pdf:multi-1", "grade": "błędna", "note": "Wrong answer due to not retrieved context."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-1", "grade": "poprawna", "note": ""}
 {"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-2", "grade": "poprawna", "note": "Correct (borderline); contains the expected fact from p15 but is needlessly hedged, claiming the context does not state it explicitly."}
 {"id": "mit-6-0001/MIT6_0001F16_Lec9.pdf:easy-3", "grade": "poprawna", "note": ""}
