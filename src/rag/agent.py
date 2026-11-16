@@ -34,7 +34,7 @@ SEARCH_DOCS_TOOL: dict[str, Any] = {
             "type": "object",
             "properties": {
                 "query": {"type": "string", "description": "Search query."},
-                "k": {"type": "integer", "description": "Number of fragments (1-10).", "default": 4},
+                "k": {"type": "integer", "description": "Number of fragments, 1-10.", "default": 4},
             },
             "required": ["query"],
         },
