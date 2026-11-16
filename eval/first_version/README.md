@@ -18,7 +18,8 @@ Po poprawkach w złotym zestawie (commity `6865165`, `b820353`) cztery pytania z
 („bisection sort” → „bisection search”) i `Lec6.pdf:multi-1` (literówki, „additional step” →
 „addition step”). Uruchomiono je ponownie z aktualną treścią (commit `efb3d27`, bez zmian
 w retrievalu, prompcie i chunkingu, ten sam indeks i `config`), ich wiersze zastąpiły poprzednie,
-średnie przeliczono, a oceny `Lec12` i `Lec6` usunięto do ponownej oceny.
+średnie przeliczono, a wszystkie cztery odpowiedzi oceniono (`Lec2` i `Lec8` po raz pierwszy,
+`Lec12` i `Lec6` ponownie).
 
 ## Środowisko
 
