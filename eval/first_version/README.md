@@ -1,8 +1,9 @@
 # Przebieg bazowy (E1)
 
 Pierwszy pomiar systemu na złotym zestawie `eval/golden.jsonl` (110 pytań), bez żadnych ulepszeń –
-punkt odniesienia dla kolejnych etapów. Retrieval (recall@k, MRR) i generacja odpowiedzi
-(`--generate`); poprawność treści odpowiedzi nie jest jeszcze oceniona.
+punkt odniesienia dla kolejnych etapów. Retrieval (recall@k, MRR), generacja odpowiedzi
+(`--generate`) i ręczna ocena poprawności odpowiedzi (`*.grades.jsonl`,
+`scripts/grade_answers.py`). Wyniki i wnioski: [README – Pomiar bazowy](../../README.md#pomiar-bazowy).
 
 Ustawienia aplikacji (modele, `TOP_K`, chunking, temperature…) są w polu `config` pliku JSON.
 

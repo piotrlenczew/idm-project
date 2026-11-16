@@ -14,10 +14,11 @@ Wykłady Missing Semester 2026 i MIT 6.0001 to przykładowy zestaw materiałów 
 (pobierany przez `scripts/fetch_corpus.py`).
 
 Etapy projektu:
-1. działający end-to-end na przykładowych materiałach,
-2. złoty zestaw pytań i ewaluacja,
-3. poprawa jakości (retrieval, chunking, prompt),
-4. tool calling (narzędzia do ustalenia).
+1. E1 – system bazowy: działający end-to-end, zestaw testowy i pierwszy pomiar (zrobione,
+   przebieg w `eval/first_version/`),
+2. E2 – poprawa jakości (retrieval, chunking, prompt, parsowanie PDF), porównanie z E1,
+3. E3 – agent z tool callingiem (model sam wybiera narzędzia; plan narzędzi w README),
+   porównanie z E2 na tym samym zestawie.
 
 Wybieraj proste, jawne rozwiązania zamiast sprytnych abstrakcji. Repo musi działać na laptopach 8–16 GB
 (macOS/Windows/Linux).
